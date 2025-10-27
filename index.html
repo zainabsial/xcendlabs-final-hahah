@@ -59,6 +59,13 @@
     h2{font-weight:700; font-size:clamp(28px,4.2vw,44px); line-height:1.15}
     h3{font-weight:600; font-size:22px}
     p.lead{font-size:20px; color:var(--text-2)}
+    
+    @media (max-width: 768px) {
+      h1{font-size:clamp(32px,8vw,56px); line-height:1.1}
+      h2{font-size:clamp(24px,6vw,36px); line-height:1.2}
+      h3{font-size:20px}
+      p.lead{font-size:18px}
+    }
 
     a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
@@ -67,6 +74,12 @@
     .container{max-width:var(--container); margin:0 auto; padding:0 24px}
     .section{position:relative; overflow:hidden; padding:84px 0}
     .section-sm{padding:56px 0}
+    
+    @media (max-width: 768px) {
+      .section{padding:48px 0}
+      .section-sm{padding:36px 0}
+      .container{padding:0 20px}
+    }
 
     /* Section themes (isolated color glows) */
     .section.theme-a::before,
@@ -136,6 +149,7 @@
       nav.glass-effect{width:90vw; max-width:350px; padding:0}
       nav.glass-effect .nav-bar-flex{min-height:44px; padding:0 12px}
       nav.glass-effect .nav-toggle{display:flex}
+      nav.glass-effect .logo-img{height:25.11px}
       nav.glass-effect .nav-links{position:absolute; top:52px; left:50%; transform:translateX(-50%) scaleY(0); transform-origin:top; width:calc(100% - 4px); background:rgba(11,18,36,.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); flex-direction:column; justify-content:center; gap:0; border-radius:0 0 16px 16px; box-shadow:0 8px 32px rgba(0,0,0,.25); overflow:hidden; transition: transform 0.3s ease; border:1px solid rgba(255,255,255,.08); border-top:none;}
       nav.glass-effect .nav-links.open{transform:translateX(-50%) scaleY(1)}
       nav.glass-effect .nav-links a{display:block; width:100%; text-align:center; padding:14px 24px; border-bottom:1px solid rgba(255,255,255,.08); font-size:15px}
@@ -143,6 +157,13 @@
       nav.glass-effect .book-call-btn{margin:8px auto 8px; width:calc(100% - 32px); text-align:center}
     }
 
+    /* Hide cursor animation on mobile */
+    @media (max-width: 768px) {
+      #cursor-container {
+        display: none !important;
+      }
+    }
+    
     /* Hero — clean, minimal with animations */
     .hero{padding-top:calc(var(--header-h) + var(--header-offset, 0px) + 80px); padding-bottom:80px; position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center;}
     
@@ -160,174 +181,19 @@
     }
     .hero h1{max-width:1100px; margin:0 auto; animation: fadeInUp 0.8s ease-out 0.2s backwards; text-shadow: 0 2px 20px rgba(0,0,0,0.3);}
     .hero h1 strong{background:linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
-    .hero .lead{max-width:860px; margin:0 auto; animation: fadeInUp 0.8s ease-out 0.4s backwards; text-shadow: 0 1px 10px rgba(0,0,0,0.3);}
+    .hero .lead{max-width:860px; margin:0 auto; margin-top:10px; animation: fadeInUp 0.8s ease-out 0.4s backwards; text-shadow: 0 1px 10px rgba(0,0,0,0.3);}
     .center{text-align:center}
     .hero .cta{margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center; animation: fadeInUp 0.8s ease-out 0.6s backwards;}
+    
+    @media (max-width: 768px) {
+      .hero .eyebrow {
+        padding: 6.72px 11.76px;
+        font-size: 14px;
+        gap: 8.4px;
+      }
+    }
 
-    /* Robot Introduction Section */
-    .robot-intro-section {
-      padding: 80px 0;
-      position: relative;
-      overflow: visible;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    
-    /* Large background text behind robot */
-    .robot-intro-section::before {
-      content: 'XCENDLABS';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: clamp(80px, 15vw, 200px);
-      font-weight: 900;
-      font-family: "Space Grotesk", ui-sans-serif;
-      color: rgba(255, 255, 255, 0.02);
-      white-space: nowrap;
-      z-index: 0;
-      pointer-events: none;
-      letter-spacing: 0.1em;
-    }
-    
-    .robot-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 60px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-      max-width: 1400px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    
-    /* Stats Column */
-    .robot-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      animation: fadeInLeft 1s ease-out;
-    }
-    
-    .stat-item {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-    
-    .stat-item:nth-child(1) { animation-delay: 0.2s; }
-    .stat-item:nth-child(2) { animation-delay: 0.4s; }
-    .stat-item:nth-child(3) { animation-delay: 0.6s; }
-    
-    .stat-number {
-      font-size: clamp(48px, 6vw, 72px);
-      font-weight: 700;
-      font-family: "Space Grotesk", ui-sans-serif;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    
-    .stat-label {
-      font-size: 18px;
-      color: var(--text-2);
-      font-weight: 500;
-    }
-    
-    .stat-description {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-    
-    /* Robot Column */
-    .robot-intro-visual {
-      animation: fadeInRight 1s ease-out;
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 100%;
-      overflow: visible;
-    }
-    
-    .spline-robot-container {
-      width: 100%;
-      height: 700px;
-      overflow: visible;
-      position: relative;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .spline-robot-container spline-viewer {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    
-    /* Hide Spline watermark in robot section too */
-    .spline-robot-container spline-viewer::part(logo),
-    .spline-robot-container spline-viewer #logo {
-      display: none !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-    }
-    
-    @media (max-width: 980px) {
-      .robot-intro-section {
-        padding: 60px 0;
-      }
-      
-      .robot-intro-section::before {
-        font-size: clamp(60px, 12vw, 120px);
-      }
-      
-      .robot-intro-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      
-      .robot-stats {
-        text-align: center;
-      }
-      
-      .spline-robot-container {
-        height: 600px;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .robot-intro-section {
-        padding: 40px 0;
-      }
-      
-      .robot-intro-section::before {
-        font-size: clamp(40px, 10vw, 80px);
-        letter-spacing: 0.05em;
-      }
-      
-      .robot-intro-grid {
-        gap: 30px;
-      }
-      
-      .robot-stats {
-        gap: 30px;
-      }
-      
-      .stat-number {
-        font-size: clamp(40px, 10vw, 56px);
-      }
-      
-      .spline-robot-container {
-        height: 500px;
-      }
-    }
+
     
     .mt-24 {
       margin-top: 24px;
@@ -353,16 +219,18 @@
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); 
       border:1px solid rgba(255,255,255,.08); border-radius:var(--radius-lg); padding:24px; 
-      box-shadow:var(--shadow-sm); transition:transform .3s ease, box-shadow .3s ease;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out forwards;
+      box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease;
+      opacity: 1;
+      will-change: transform;
     }
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.2s; }
-    .card:nth-child(3) { animation-delay: 0.3s; }
-    .card:nth-child(4) { animation-delay: 0.4s; }
-    .card:nth-child(5) { animation-delay: 0.5s; }
-    .card:nth-child(6) { animation-delay: 0.6s; }
+    @media (min-width: 769px) {
+      .card:nth-child(1) { animation: fadeInUp 0.4s ease-out 0.05s backwards; }
+      .card:nth-child(2) { animation: fadeInUp 0.4s ease-out 0.1s backwards; }
+      .card:nth-child(3) { animation: fadeInUp 0.4s ease-out 0.15s backwards; }
+      .card:nth-child(4) { animation: fadeInUp 0.4s ease-out 0.2s backwards; }
+      .card:nth-child(5) { animation: fadeInUp 0.4s ease-out 0.25s backwards; }
+      .card:nth-child(6) { animation: fadeInUp 0.4s ease-out 0.3s backwards; }
+    }
     
     .card:hover{transform:translateY(-6px); box-shadow:var(--shadow-md)}
 
@@ -383,14 +251,15 @@
     .list{list-style:none; display:grid; gap:12px}
     .list li{
       display:flex; gap:12px; align-items:flex-start; padding:12px; border-radius:12px;
-      opacity: 0;
-      animation: fadeInLeft 0.5s ease-out forwards;
+      opacity: 1;
     }
-    .list li:nth-child(1) { animation-delay: 0.1s; }
-    .list li:nth-child(2) { animation-delay: 0.2s; }
-    .list li:nth-child(3) { animation-delay: 0.3s; }
-    .list li:nth-child(4) { animation-delay: 0.4s; }
-    .list li:nth-child(5) { animation-delay: 0.5s; }
+    @media (min-width: 769px) {
+      .list li:nth-child(1) { animation: fadeInLeft 0.3s ease-out 0.05s backwards; }
+      .list li:nth-child(2) { animation: fadeInLeft 0.3s ease-out 0.1s backwards; }
+      .list li:nth-child(3) { animation: fadeInLeft 0.3s ease-out 0.15s backwards; }
+      .list li:nth-child(4) { animation: fadeInLeft 0.3s ease-out 0.2s backwards; }
+      .list li:nth-child(5) { animation: fadeInLeft 0.3s ease-out 0.25s backwards; }
+    }
     
     @keyframes fadeInLeft {
       from {
@@ -419,12 +288,17 @@
       border-radius:var(--radius-xl); padding:44px 36px; 
       background:linear-gradient(135deg, rgba(34,211,238,.10), rgba(167,139,250,.10)); 
       border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow-md); text-align:center;
-      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @media (prefers-reduced-motion: no-preference) {
+      .band {
+        animation: pulse 4s ease-in-out infinite;
+      }
     }
     
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
+      50% { transform: scale(1.01); }
     }
 
     /* Footer */
@@ -494,16 +368,139 @@
       *{animation:none!important; transition:none!important}
     }
     
-    /* Scroll reveal animation class */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+         /* Scroll reveal animation class */
+     .scroll-reveal {
+       opacity: 0;
+       transform: translateY(30px);
+       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+     }
+     .scroll-reveal.revealed {
+       opacity: 1;
+       transform: translateY(0);
+     }
+     
+         @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
-    .scroll-reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    
+         /* Stats Section - Minimal & Eye-Catching */
+     .stats-section {
+       padding: 100px 0;
+       position: relative;
+       background: transparent;
+     }
+     
+     .stats-grid {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 64px;
+       position: relative;
+       z-index: 1;
+       max-width: 900px;
+       margin: 0 auto;
+     }
+     
+     .stat-card {
+       text-align: center;
+       padding: 0;
+       background: transparent;
+       border: none;
+       position: relative;
+       opacity: 0;
+       animation: fadeInUp 0.8s ease-out forwards;
+     }
+     
+     .stat-card:nth-child(1) { animation-delay: 0.1s; }
+     .stat-card:nth-child(2) { animation-delay: 0.2s; }
+     .stat-card:nth-child(3) { animation-delay: 0.3s; }
+     
+     .stat-number {
+       font-size: clamp(52px, 6vw, 96px);
+       font-weight: 800;
+       background: linear-gradient(135deg, #FFFFFF 0%, var(--accent) 50%, var(--accent-2) 100%);
+       -webkit-background-clip: text;
+       background-clip: text;
+       color: transparent;
+       line-height: 1;
+       margin-bottom: 16px;
+       font-family: "Space Grotesk", ui-sans-serif;
+       letter-spacing: -2px;
+       position: relative;
+       display: block;
+     }
+     
+     .stat-number::after {
+       content: '';
+       position: absolute;
+       bottom: -12px;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 60px;
+       height: 3px;
+       background: linear-gradient(90deg, transparent, var(--accent), transparent);
+       border-radius: 2px;
+     }
+     
+     .stat-label {
+       font-size: 13px;
+       color: var(--muted);
+       font-weight: 600;
+       text-transform: uppercase;
+       letter-spacing: 1.5px;
+       margin-top: 24px;
+     }
+    
+         @media (max-width: 980px) {
+       .stats-grid {
+         grid-template-columns: repeat(3, 1fr);
+         gap: 48px;
+       }
+       
+       .stat-number {
+         font-size: clamp(42px, 5vw, 72px);
+       }
+     }
+     
+     @media (max-width: 768px) {
+       .stats-section {
+         padding: 80px 0;
+       }
+       
+       .stats-grid {
+         grid-template-columns: 1fr;
+         gap: 56px;
+       }
+       
+       .stat-number {
+         font-size: clamp(64px, 12vw, 96px);
+       }
+       
+       .stat-label {
+         font-size: 12px;
+         margin-top: 20px;
+       }
+     }
+     
+     @media (max-width: 640px) {
+       .stats-section {
+         padding: 60px 0;
+       }
+       
+       .stats-grid {
+         gap: 48px;
+       }
+       
+       .stat-number {
+         font-size: clamp(56px, 15vw, 80px);
+       }
+     }
   </style>
 </head>
 <body>
@@ -541,38 +538,28 @@
       </div>
     </div>
   </section>
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.86/build/spline-viewer.js"></script>
   <div class="divider"></div>
 
-  <!-- Robot Introduction Section -->
-  <section id="intro" class="robot-intro-section section">
-    <div class="robot-intro-grid">
-      <!-- Stats Column -->
-      <div class="robot-stats">
-        <div class="stat-item">
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
           <div class="stat-number">500+</div>
           <div class="stat-label">Automations Built</div>
-          <div class="stat-description">Custom AI solutions deployed</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">10M+</div>
-          <div class="stat-label">Hours Saved</div>
-          <div class="stat-description">Through intelligent automation</div>
+        <div class="stat-card">
+          <div class="stat-number">16+</div>
+          <div class="stat-label">Hours Saved Per Week</div>
         </div>
-        <div class="stat-item">
+        <div class="stat-card">
           <div class="stat-number">98%</div>
-          <div class="stat-label">Client Satisfaction</div>
-          <div class="stat-description">Delivering results that matter</div>
-        </div>
-      </div>
-      <!-- Robot Column -->
-      <div class="robot-intro-visual">
-        <div class="spline-robot-container">
-          <spline-viewer url="https://prod.spline.design/nT9pcWdRfC1MNwCP/scene.splinecode" loading-anim-type="spinner-big-dark"></spline-viewer>
+          <div class="stat-label">Success Rate</div>
         </div>
       </div>
     </div>
   </section>
+
   <div class="divider"></div>
 
   <!-- Services -->
@@ -597,10 +584,10 @@
         </article>
         <article class="card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8L3 4z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
           </div>
-          <h3 class="mb-12">GHL Funnel Building</h3>
-          <p class="muted">Customer journeys that convert — integrated with CRM, payments, and analytics.</p>
+          <h3 class="mb-12">Performance Marketing</h3>
+          <p class="muted">Data‑driven campaigns across channels that optimize for real results and scalable growth.</p>
         </article>
         <article class="card">
           <div class="icon" aria-hidden="true">
@@ -721,18 +708,18 @@
   <script>
     // Cursor Animation Configuration
     const CURSOR_CONFIG = {
-      SIM_RESOLUTION: 128,
-      DYE_RESOLUTION: 1440,
-      CAPTURE_RESOLUTION: 512,
-      DENSITY_DISSIPATION: 3.5,
-      VELOCITY_DISSIPATION: 2,
-      PRESSURE: 0.1,
-      PRESSURE_ITERATIONS: 20,
-      CURL: 3,
-      SPLAT_RADIUS: 0.2,
-      SPLAT_FORCE: 5100,
-      SHADING: true,
-      COLOR_UPDATE_SPEED: 10,
+      SIM_RESOLUTION: 64,
+      DYE_RESOLUTION: 512,
+      CAPTURE_RESOLUTION: 256,
+      DENSITY_DISSIPATION: 4.0,
+      VELOCITY_DISSIPATION: 2.5,
+      PRESSURE: 0.15,
+      PRESSURE_ITERATIONS: 15,
+      CURL: 2,
+      SPLAT_RADIUS: 0.15,
+      SPLAT_FORCE: 4000,
+      SHADING: false,
+      COLOR_UPDATE_SPEED: 8,
       BACK_COLOR: { r: 0.5, g: 0, b: 0 },
       TRANSPARENT: true,
       PAUSED: false
@@ -1744,88 +1731,100 @@
     sections.forEach(id => { const el = document.getElementById(id); if(el) io.observe(el); });
 
     // Cursor Animation Event Listeners
-    window.addEventListener('mousedown', e => {
-      let pointer = pointers[0];
-      let posX = scaleByPixelRatio(e.clientX);
-      let posY = scaleByPixelRatio(e.clientY);
-      updatePointerDownData(pointer, -1, posX, posY);
-      clickSplat(pointer);
-    });
-
-    document.body.addEventListener('mousemove', function handleFirstMouseMove(e) {
-      let pointer = pointers[0];
-      let posX = scaleByPixelRatio(e.clientX);
-      let posY = scaleByPixelRatio(e.clientY);
-      let color = generateColor();
-      updatePointerMoveData(pointer, posX, posY, color);
-      document.body.removeEventListener('mousemove', handleFirstMouseMove);
-    });
-
-    window.addEventListener('mousemove', e => {
-      let pointer = pointers[0];
-      let posX = scaleByPixelRatio(e.clientX);
-      let posY = scaleByPixelRatio(e.clientY);
-      let color = pointer.color;
-      updatePointerMoveData(pointer, posX, posY, color);
-    });
-
-    document.body.addEventListener('touchstart', function handleFirstTouchStart(e) {
-      const touches = e.targetTouches;
-      let pointer = pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        let posX = scaleByPixelRatio(touches[i].clientX);
-        let posY = scaleByPixelRatio(touches[i].clientY);
-        updatePointerDownData(pointer, touches[i].identifier, posX, posY);
-      }
-      document.body.removeEventListener('touchstart', handleFirstTouchStart);
-    });
-
-    window.addEventListener('touchstart', e => {
-      const touches = e.targetTouches;
-      let pointer = pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        let posX = scaleByPixelRatio(touches[i].clientX);
-        let posY = scaleByPixelRatio(touches[i].clientY);
-        updatePointerDownData(pointer, touches[i].identifier, posX, posY);
-      }
-    });
-
-    window.addEventListener('touchmove', e => {
-      const touches = e.targetTouches;
-      let pointer = pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        let posX = scaleByPixelRatio(touches[i].clientX);
-        let posY = scaleByPixelRatio(touches[i].clientY);
-        updatePointerMoveData(pointer, posX, posY, pointer.color);
-      }
-    }, false);
-
-    window.addEventListener('touchend', e => {
-      const touches = e.changedTouches;
-      let pointer = pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        updatePointerUpData(pointer);
-      }
-    });
+    const isMobile = window.matchMedia('(max-width: 768px)').matches || /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    
+    if (!isMobile) {
+      window.addEventListener('mousedown', e => {
+        let pointer = pointers[0];
+        let posX = scaleByPixelRatio(e.clientX);
+        let posY = scaleByPixelRatio(e.clientY);
+        updatePointerDownData(pointer, -1, posX, posY);
+        clickSplat(pointer);
+      });
+  
+      document.body.addEventListener('mousemove', function handleFirstMouseMove(e) {
+        let pointer = pointers[0];
+        let posX = scaleByPixelRatio(e.clientX);
+        let posY = scaleByPixelRatio(e.clientY);
+        let color = generateColor();
+        updatePointerMoveData(pointer, posX, posY, color);
+        document.body.removeEventListener('mousemove', handleFirstMouseMove);
+      });
+  
+      window.addEventListener('mousemove', e => {
+        let pointer = pointers[0];
+        let posX = scaleByPixelRatio(e.clientX);
+        let posY = scaleByPixelRatio(e.clientY);
+        let color = pointer.color;
+        updatePointerMoveData(pointer, posX, posY, color);
+      });
+  
+      document.body.addEventListener('touchstart', function handleFirstTouchStart(e) {
+        const touches = e.targetTouches;
+        let pointer = pointers[0];
+        for (let i = 0; i < touches.length; i++) {
+          let posX = scaleByPixelRatio(touches[i].clientX);
+          let posY = scaleByPixelRatio(touches[i].clientY);
+          updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+        }
+        document.body.removeEventListener('touchstart', handleFirstTouchStart);
+      });
+  
+      window.addEventListener('touchstart', e => {
+        const touches = e.targetTouches;
+        let pointer = pointers[0];
+        for (let i = 0; i < touches.length; i++) {
+          let posX = scaleByPixelRatio(touches[i].clientX);
+          let posY = scaleByPixelRatio(touches[i].clientY);
+          updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+        }
+      });
+  
+      window.addEventListener('touchmove', e => {
+        const touches = e.targetTouches;
+        let pointer = pointers[0];
+        for (let i = 0; i < touches.length; i++) {
+          let posX = scaleByPixelRatio(touches[i].clientX);
+          let posY = scaleByPixelRatio(touches[i].clientY);
+          updatePointerMoveData(pointer, posX, posY, pointer.color);
+        }
+      }, false);
+  
+      window.addEventListener('touchend', e => {
+        const touches = e.changedTouches;
+        let pointer = pointers[0];
+        for (let i = 0; i < touches.length; i++) {
+          updatePointerUpData(pointer);
+        }
+      });
+    }
 
     // Initialize animations
     window.addEventListener('load', () => {
-      initCursorAnimation();
+      const canvasContainer = document.getElementById('cursor-container');
+      if (isMobile && canvasContainer) {
+        canvasContainer.style.display = 'none';
+      } else if (!isMobile) {
+        initCursorAnimation();
+      }
       initScrollReveal();
-      hideSplineLogo();
       initCounterAnimation();
     });
 
     if (document.readyState === 'complete') {
-      initCursorAnimation();
+      const canvasContainer = document.getElementById('cursor-container');
+      if (isMobile && canvasContainer) {
+        canvasContainer.style.display = 'none';
+      } else if (!isMobile) {
+        initCursorAnimation();
+      }
       initScrollReveal();
-      hideSplineLogo();
       initCounterAnimation();
     }
     
     // Counter animation for stats
     function initCounterAnimation() {
-      const statItems = document.querySelectorAll('.stat-item');
+       const statItems = document.querySelectorAll('.stat-card');
       
       const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1873,24 +1872,9 @@
       statItems.forEach(item => counterObserver.observe(item));
     }
     
-    // Function to hide Spline watermark
-    function hideSplineLogo() {
-      setTimeout(() => {
-        const splineViewers = document.querySelectorAll('spline-viewer');
-        splineViewers.forEach(splineViewer => {
-          if (splineViewer && splineViewer.shadowRoot) {
-            const logo = splineViewer.shadowRoot.querySelector('#logo');
-            if (logo) {
-              logo.style.display = 'none';
-              logo.style.opacity = '0';
-              logo.style.visibility = 'hidden';
-            }
-          }
-        });
-        // Try again after a delay in case it loads later
-        setTimeout(hideSplineLogo, 1000);
-      }, 100);
-    }
+    
+    
+        
   </script>
 </body>
 </html>
